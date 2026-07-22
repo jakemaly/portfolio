@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects', () => true);
+---
+
+<BaseLayout currentPath="/work">
+	<div>
+		<p class="text-text-muted text-sm">
+			<span class="text-accent">$</span> ls projects/
+		</p>
+
+		<div class="mt-6 text-text-muted select-none" aria-hidden="true">
+			<span>───────────────────────────────────────</span>
+		</div>
+
+		<div class="mt-6 space-y-8">
+			{projects.map((project) => {
+				const { title, description, tech, githubUrl, liveUrl, date } = project.data;
+				return (
+					<article class="border-l-2 border-border pl-4">
+						<a href={`/work/${project.id}`} class="group block">
+							<div class="flex items-baseline justify-between gap-4">
+								<h2 class="text-text group-hover:text-accent transition-colors text-lg font-medium">
+									{title}
+								</h2>
+								<span class="text-text-muted text-xs shrink-0">{date}</span>
+							</div>
+							<p class="text-text-muted text-sm mt-1 leading-relaxed">
+								{description}
+							</p>
+							<div class="flex flex-wrap gap-2 mt-3">
+								{tech.map((t) => (
+									<span class="px-2 py-0.5 text-xs bg-bg-muted text-text-muted rounded-sm">
+										{t}
+									</span>
+								))}
+							</div>
+							<div class="flex gap-4 mt-2 text-xs text-text-muted">
+								{githubUrl && (
+									<a href={githubUrl} class="hover:text-text transition-colors" target="_blank" rel="noopener">
+										→ code
+									</a>
+								)}
+								{liveUrl && (
+									<a href={liveUrl} class="hover:text-text transition-colors" target="_blank" rel="noopener">
+										→ live
+									</a>
+								)}
+							</div>
+						</a>
+					</article>
+				);
+			})}
+		</div>
+	</div>
+</BaseLayout>

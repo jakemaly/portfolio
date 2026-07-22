@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects', () => true);
+---
+
+<BaseLayout currentPath="/">
+	<div class="min-h-[60vh] relative flex flex-col justify-center">
+		<div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+			<iframe
+				src="/heart.html"
+				title="heart animation"
+				class="absolute top-[-10%] right-0 translate-x-[35%] w-[640px] h-[480px] border-none bg-[#252526]"
+				style="border: none; opacity: 0.4;"
+				loading="lazy"
+			></iframe>
+		</div>
+		<div class="relative z-10">
+			<h1 class="font-heading text-[clamp(2.5rem,6vw,5rem)] font-medium tracking-tight text-text">
+				jake maly
+			</h1>
+		<p class="font-body text-[clamp(0.9rem,2vw,1.15rem)] font-light leading-relaxed text-text-muted mt-4 max-w-lg">
+			engineering, design, artificial intelligence.
+			<!-- \n -->
+			<br />
+			student and researcher @ university of toronto
+		</p>
+		</div>
+	</div>
+
+	<!-- Gallery -->
+	<div class="mt-20 mb-20">
+		<p class="text-text-muted text-sm mb-6">
+			<span class="text-accent">$</span> ls gallery/
+		</p>
+
+		<div class="text-text-muted select-none mb-8" aria-hidden="true">
+			<span>───────────────────────────────────────</span>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<!-- Projects -->
+			<a href="/work" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
+				<p class="text-text-muted text-xs mb-2">
+					<span class="text-accent">├──</span> projects/
+				</p>
+				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
+					Projects
+				</h2>
+				<p class="text-text-muted text-sm mt-1">
+					{projects.length} project{projects.length !== 1 ? 's' : ''}
+				</p>
+				<div class="flex flex-wrap gap-1.5 mt-3">
+					{projects.slice(0, 3).map((p) => (
+						<span class="px-2 py-0.5 text-xs bg-bg-muted text-text-muted rounded-sm">
+							{p.data.title}
+						</span>
+					))}
+				</div>
+			</a>
+
+			<!-- Experience -->
+			<a href="#" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
+				<p class="text-text-muted text-xs mb-2">
+					<span class="text-accent">├──</span> experience/
+				</p>
+				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
+					Experience
+				</h2>
+				<p class="text-text-muted text-sm mt-1">
+					Work &amp; research
+				</p>
+			</a>
+
+			<!-- Writing -->
+			<a href="#" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
+				<p class="text-text-muted text-xs mb-2">
+					<span class="text-accent">├──</span> writing/
+				</p>
+				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
+					Writing
+				</h2>
+				<p class="text-text-muted text-sm mt-1">
+					Notes &amp; thoughts
+				</p>
+			</a>
+
+			<!-- Contact -->
+			<a href="/contact" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
+				<p class="text-text-muted text-xs mb-2">
+					<span class="text-accent">└──</span> contact/
+				</p>
+				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
+					Contact
+				</h2>
+				<p class="text-text-muted text-sm mt-1">
+					Get in touch
+				</p>
+			</a>
+		</div>
+	</div>
+</BaseLayout>

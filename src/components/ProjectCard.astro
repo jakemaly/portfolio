@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	entry: CollectionEntry<'projects'>;
+}
+
+const { entry } = Astro.props;
+const { title, description, tech, githubUrl, liveUrl } = entry.data;
+---
+
+<article class="group border-b border-border pb-8">
+	<div class="flex flex-col gap-2">
+		<h2 class="font-heading text-xl font-medium text-text">
+			<a href={`/work/${entry.id}`} class="hover:text-accent transition-colors">
+				{title}
+			</a>
+		</h2>
+		<p class="font-body font-light text-text-muted leading-relaxed">
+			{description}
+		</p>
+		<div class="flex items-center gap-3 mt-2">
+			<div class="flex gap-2 flex-wrap">
+				{tech.map((t) => (
+					<span class="px-2 py-0.5 text-xs bg-bg-muted text-text-muted rounded-full">{t}</span>
+				))}
+			</div>
+			<div class="flex gap-3 ml-auto">
+				{githubUrl && (
+					<a href={githubUrl} class="text-xs text-text-muted hover:text-text transition-colors" target="_blank" rel="noopener">
+						Code
+					</a>
+				)}
+				{liveUrl && (
+					<a href={liveUrl} class="text-xs text-text-muted hover:text-text transition-colors" target="_blank" rel="noopener">
+						Live
+					</a>
+				)}
+			</div>
+		</div>
+	</div>
+</article>

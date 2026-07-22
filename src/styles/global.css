@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+	--color-bg: var(--bg);
+	--color-bg-muted: var(--bg-muted);
+	--color-text: var(--text);
+	--color-text-muted: var(--text-muted);
+	--color-border: var(--border);
+	--color-accent: var(--accent);
+	--color-header: var(--header);
+	--color-accent-dim: var(--accent-dim);
+	--color-accent-faint: var(--accent-faint);
+
+	--font-heading: 'Lora', Georgia, serif;
+	--font-body: 'Switzer', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+	--bg: #252526;
+	--bg-muted: #36363a;
+	--text: #e8e8e8;
+	--text-muted: #9a9a9e;
+	--border: #404044;
+	--accent: #023020;
+	--accent-dim: #023020;
+	--accent-faint: #023020;
+	--header: #EADDCA;
+}
+
+[data-theme="dark"] {
+	--bg: #060a06;
+	--bg-muted: #0c140c;
+	--text: #e0e8e0;
+	--text-muted: #8a9a8a;
+	--border: #162016;
+	--accent: #3d6b4f;
+	--accent-dim: #2f5039;
+	--accent-faint: #203a28;
+}
+
+body {
+	font-family: var(--font-body);
+	background-color: var(--bg);
+	color: var(--text);
+}
+
+::selection {
+	background-color: var(--accent-dim);
+	color: var(--bg);
+}
+
+a {
+	color: var(--text);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--accent);
+}

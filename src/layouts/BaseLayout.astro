@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+
+const { currentPath } = Astro.props;
+
+const navItems = [
+	{ label: 'about', href: '/' },
+	{ label: 'projects', href: '/work' },
+	{ label: 'contact', href: '/contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Jake Maly</title>
+
+		<!-- Lora (Google Fonts) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Switzer (Fontshare CDN) -->
+		<link
+			rel="preload"
+			href="https://api.fontshare.com/v2/families/sW90rN?formats=woff2"
+			as="fetch"
+			crossorigin="anonymous"
+		/>
+		<link
+			href="https://api.fontshare.com/v2/css?families=sW90rN&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<header class="border-b border-header/20 bg-header/5">
+			<div class="max-w-3xl mx-auto px-6 py-3 flex items-center gap-3 text-sm">
+				<span class="text-text-muted select-none">$ cd</span>
+				{navItems.map((item, i) => (
+					<>
+						<a
+							href={item.href}
+							class={`transition-colors ${
+								currentPath === item.href
+									? 'text-text font-medium'
+									: 'text-text-muted hover:text-text'
+							}`}
+						>
+							{item.label}
+						</a>
+						{i < navItems.length - 1 && <span class="text-text-muted select-none">│</span>}
+					</>
+				))}
+			</div>
+		</header>
+
+		<main class="max-w-3xl mx-auto px-6 py-12">
+			<slot />
+		</main>
+
+		<footer class="border-t border-header/20 bg-header/5">
+			<div class="max-w-3xl mx-auto px-6 py-6 text-xs text-text-muted">
+				<p>© {new Date().getFullYear()} jake maly</p>
+			</div>
+		</footer>
+	</body>
+</html>

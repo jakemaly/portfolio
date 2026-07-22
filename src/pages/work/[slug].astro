@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map((project) => ({
+		params: { slug: project.id },
+	}));
+}
+
+const projects = await getCollection('projects');
+const project = projects.find((p) => p.id === Astro.params.slug);
+
+if (!project) {
+	Astro.redirect('/work');
+}
+
+const { title, description, tech, githubUrl, liveUrl, date } = project.data;
+---
+
+<BaseLayout currentPath="/work">
+	<div class="max-w-2xl">
+		<a href="/work" class="text-sm text-text-muted hover:text-text transition-colors inline-block mb-8">
+			<span class="text-accent">$</span> cd ..
+		</a>
+
+		<p class="text-text-muted text-xs mb-2">{date}</p>
+		<h1 class="text-3xl font-bold text-text mb-2">{title}</h1>
+
+		<div class="mt-4 mb-6 text-text-muted select-none" aria-hidden="true">
+			<span>───────────────────────────────────────</span>
+		</div>
+
+		<div class="flex flex-wrap gap-2 mb-8">
+			{tech.map((t) => (
+				<span class="px-2 py-0.5 text-xs bg-bg-muted text-text-muted rounded-sm">
+					{t}
+				</span>
+			))}
+		</div>
+
+		<p class="text-text-muted leading-relaxed">{description}</p>
+
+		<div class="flex gap-4 mt-8 text-sm">
+			{githubUrl && (
+				<a href={githubUrl} class="hover:text-accent transition-colors" target="_blank" rel="noopener">
+					→ github
+				</a>
+			)}
+			{liveUrl && (
+				<a href={liveUrl} class="hover:text-accent transition-colors" target="_blank" rel="noopener">
+					→ live demo
+				</a>
+			)}
+		</div>
+	</div>
+</BaseLayout>
