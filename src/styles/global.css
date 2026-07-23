@@ -23,9 +23,9 @@
 	--text: #e8e8e8;
 	--text-muted: #9a9a9e;
 	--border: #404044;
-	--accent: #32111a;
-	--accent-dim: #32111a;
-	--accent-faint: #32111a;
+	--accent: rgba(210, 10, 46, 0.4);
+	--accent-dim: rgba(210, 10, 46, 0.3);
+	--accent-faint: rgba(210, 10, 46, 0.15);
 	--header: #EADDCA;
 }
 
@@ -44,6 +44,18 @@ body {
 	font-family: var(--font-body);
 	background-color: var(--bg);
 	color: var(--text);
+	background-image:
+		/* fine grid — 20px squares */
+		linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+		/* major grid — every 5 squares (100px), slightly more defined */
+		linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+	background-size:
+		20px 20px,
+		20px 20px,
+		100px 100px,
+		100px 100px;
 }
 
 ::selection {
@@ -58,4 +70,18 @@ a {
 
 a:hover {
 	color: var(--accent);
+}
+
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+.animate-blink {
+	animation: blink 1s step-end infinite;
 }

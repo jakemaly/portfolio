@@ -17,6 +17,9 @@ const projects = await getCollection('projects', () => true);
 			></iframe>
 		</div>
 		<div class="relative z-10">
+			<p class="text-sm text-text-muted/50 font-mono mb-2">
+				$ whoami ?
+			</p>
 			<h1 class="font-heading text-[clamp(2.5rem,6vw,5rem)] font-medium tracking-tight text-text">
 				jake maly
 			</h1>
@@ -24,80 +27,47 @@ const projects = await getCollection('projects', () => true);
 			engineering, design, artificial intelligence.
 			<!-- \n -->
 			<br />
-			student and researcher @ university of toronto
+			student & ai research @ university of toronto
 		</p>
+		<div class="flex justify-start gap-4 mt-8">
+			<a href="/work" class="font-body text-xl font-light text-text-muted hover:text-accent transition-colors underline underline-offset-4">
+				view projects
+			</a>
+			<span class="text-text-muted/30">/</span>
+			<a href="/contact" class="font-body text-xl font-light text-text-muted hover:text-accent transition-colors underline underline-offset-4">
+				resume / contact
+			</a>
 		</div>
 	</div>
+	</div>
 
-	<!-- Gallery -->
-	<div class="mt-20 mb-20">
-		<p class="text-text-muted text-sm mb-6">
-			<span class="text-accent">$</span> ls gallery/
+	<!-- Hero content section — edit the text below -->
+	<!-- TIP: add images with <img src="/your-image.jpg" alt="..." /> -->
+	<!-- TIP: images should be placed in /public/ at the project root -->
+	<div class="mt-4 mb-20">
+		<!-- ✏️ Terminal prompt decoration -->
+		<p class="text-center text-sm text-text-muted/50 font-mono mb-2">
+			$ ssh jake@portfolio
 		</p>
-
-		<div class="text-text-muted select-none mb-8" aria-hidden="true">
-			<span>───────────────────────────────────────</span>
+		<!-- ✏️ Heading — centered independently -->
+		<div class="text-center">
+			<p class="font-heading text-[clamp(1.5rem,3.5vw,3rem)] font-medium tracking-tight text-text">
+				education & experience
+			</p>
+		</div>
+		<!-- ✏️ Body text — centered container, text left-aligned inside -->
+		<div class="mt-4 mx-auto text-left max-w-lg">
+			<p class="font-body text-[clamp(0.9rem,2vw,1.15rem)] font-light leading-relaxed text-text-muted">
+			I'm currently working as an <em class="text-text/85 not-italic">Agentic AI Research Assistant</em> under the Dynamic Optimization & RL Lab in MIE. We're working to improve LLM evaluation for legal judgement.<br />
+<br />I've helped build <em class="text-text/85 not-italic">5 freelance software projects</em> with Canadian clients across VC, SaaS, AI ed-Tech, and more. I build at hackathons, for design projects, and of course, for fun! <br /><br />
+			I study <em class="text-text/85 not-italic">Engineering & Artificial Intelligence</em> at the
+			<br />
+			University of Toronto and am seeking <em class="text-text/85 not-italic">Summer 2027 internships!</em>
+			</p>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-			<!-- Projects -->
-			<a href="/work" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
-				<p class="text-text-muted text-xs mb-2">
-					<span class="text-accent">├──</span> projects/
-				</p>
-				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
-					Projects
-				</h2>
-				<p class="text-text-muted text-sm mt-1">
-					{projects.length} project{projects.length !== 1 ? 's' : ''}
-				</p>
-				<div class="flex flex-wrap gap-1.5 mt-3">
-					{projects.slice(0, 3).map((p) => (
-						<span class="px-2 py-0.5 text-xs bg-bg-muted text-text-muted rounded-sm">
-							{p.data.title}
-						</span>
-					))}
-				</div>
-			</a>
-
-			<!-- Experience -->
-			<a href="#" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
-				<p class="text-text-muted text-xs mb-2">
-					<span class="text-accent">├──</span> experience/
-				</p>
-				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
-					Experience
-				</h2>
-				<p class="text-text-muted text-sm mt-1">
-					Work &amp; research
-				</p>
-			</a>
-
-			<!-- Writing -->
-			<a href="#" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
-				<p class="text-text-muted text-xs mb-2">
-					<span class="text-accent">├──</span> writing/
-				</p>
-				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
-					Writing
-				</h2>
-				<p class="text-text-muted text-sm mt-1">
-					Notes &amp; thoughts
-				</p>
-			</a>
-
-			<!-- Contact -->
-			<a href="/contact" class="group block border border-border rounded-sm p-5 hover:border-accent transition-colors">
-				<p class="text-text-muted text-xs mb-2">
-					<span class="text-accent">└──</span> contact/
-				</p>
-				<h2 class="text-text text-lg font-medium group-hover:text-accent transition-colors">
-					Contact
-				</h2>
-				<p class="text-text-muted text-sm mt-1">
-					Get in touch
-				</p>
-			</a>
-		</div>
+		<!-- ✏️ Add links, images, or more blocks below -->
+		<!-- Example: <a href="/work" class="text-accent underline">View projects →</a> -->
+		<!-- Example: <img src="/photo.jpg" alt="Me" class="mt-6 rounded-sm max-w-xs ml-auto block" /> -->
 	</div>
 </BaseLayout>

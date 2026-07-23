@@ -4,7 +4,7 @@ import '../styles/global.css';
 const { currentPath } = Astro.props;
 
 const navItems = [
-	{ label: 'about', href: '/' },
+	{ label: 'home', href: '/' },
 	{ label: 'projects', href: '/work' },
 	{ label: 'contact', href: '/contact' },
 ];
@@ -50,12 +50,13 @@ const navItems = [
 							href={item.href}
 							class={`transition-colors ${
 								currentPath === item.href
-									? 'text-text font-medium'
+									? 'text-text font-medium hover:text-accent'
 									: 'text-text-muted hover:text-text'
 							}`}
 						>
 							{item.label}
-						</a>
+						{currentPath === item.href && <span class="inline-block w-[2px] h-[0.9em] ml-[1px] align-middle bg-current animate-blink"></span>}
+					</a>
 						{i < navItems.length - 1 && <span class="text-text-muted select-none">│</span>}
 					</>
 				))}
@@ -69,6 +70,7 @@ const navItems = [
 		<footer class="border-t border-header/20 bg-header/5">
 			<div class="max-w-3xl mx-auto px-6 py-6 text-xs text-text-muted">
 				<p>© {new Date().getFullYear()} jake maly</p>
+				<p class="mt-1">built with caffeine, curiosity &amp; &lt;3</p>
 			</div>
 		</footer>
 	</body>
