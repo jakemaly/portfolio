@@ -1,6 +1,6 @@
 ---
-title: "Medivue"
-description: "An agentic AI triage support system that  monitors emergency room waiting areas by combining patient-reported symptoms with real-time computer vision to determine meaningful changes in patient state for medical attention."
+title: "MEDIVUE"
+description: "A real-time patient monitoring system built with FastAPI, Next.js, and LangChain. Patient intake is captured via Web Speech API and processed through a Moorcheh AI orchestration layer to extract structured clinical context. MediaPipe Pose tracks skeletal landmarks from waiting area video, feeding posture and movement metrics into a reasoning engine that correlates visual anomalies with patient history to surface alerts on a clinician dashboard."
 tech:
   - Next.js
   - Tailwind CSS
