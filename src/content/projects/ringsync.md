@@ -1,14 +1,13 @@
 ---
-title: "RingSync"
+title: "RINGSYNC"
 description: "Conceptual design for a dual-ring clinical monitoring system for emergency pre-hospital care, measuring ECG, blood pressure, oxygen saturation, and temperature, catching asymmetric conditions like aortic dissection that single-site devices miss. Designed to replace multiple bulky devices with one compact system that fits in a paramedic's pocket."
 image: "/projects/ringsync/rings.png"
 tech:
-  - PPG Sensors
-  - ECG (12-Lead Reconstruction)
-  - NTC Thermistors
-  - Bluetooth
-  - Cross-Platform Tablet App
-date: "2025-03-15"
+  - Engineering Design
+  - Design Iteration and Analysis
+  - Technical Research
+  - Project Management
+date: "2025-04-09"
 featured: true
 ---
 
